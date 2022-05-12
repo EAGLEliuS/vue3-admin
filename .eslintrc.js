@@ -1,3 +1,4 @@
+/* eslint eqeqeq: 0, curly: 2 */
 module.exports = {
   root: true,
   env: {
@@ -18,7 +19,5 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    "semi": [0, "any"], // "semi": "error",
-    "quotes": [0, "double"],
   },
 }
