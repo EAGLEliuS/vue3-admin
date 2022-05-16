@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { mdiAccount, mdiAsterisk } from '@mdi/js'
+import { loginApi } from '@/api/login'
 import FullScreenSection from '@/components/FullScreenSection.vue'
 import CardComponent from '@/components/CardComponent.vue'
 import CheckRadioPicker from '@/components/CheckRadioPicker.vue'
@@ -11,6 +12,7 @@ import Divider from '@/components/Divider.vue'
 import JbButton from '@/components/JbButton.vue'
 import JbButtons from '@/components/JbButtons.vue'
 
+
 const form = reactive({
   login: 'john.doe',
   pass: 'highly-secure-password-fYjUw-',
@@ -19,26 +21,25 @@ const form = reactive({
 
 const router = useRouter()
 
-const submit = () => {
+const submit = async () => {
+  // let loginToken = await loginApi(JSON.stringify(form)).catch(err => {
+  //   let res = err.response
+  //   console.log(res)
+  // })
+  // console.log(loginToken);
   router.push('/dashboard')
 }
 </script>
 
 <template>
-  <full-screen-section
-    v-slot="{ cardClass, cardRounded }"
-    bg="login"
-  >
+  <full-screen-section v-slot="{ cardClass, cardRounded }" bg="login">
     <card-component
       :class="cardClass"
       :rounded="cardRounded"
       form
       @submit.prevent="submit"
     >
-      <field
-        label="Login"
-        help="Please enter your login"
-      >
+      <field label="Login" help="Please enter your login">
         <control
           v-model="form.login"
           :icon="mdiAccount"
@@ -47,10 +48,7 @@ const submit = () => {
         />
       </field>
 
-      <field
-        label="Password"
-        help="Please enter your password"
-      >
+      <field label="Password" help="Please enter your password">
         <control
           v-model="form.pass"
           :icon="mdiAsterisk"
@@ -69,17 +67,8 @@ const submit = () => {
       <divider />
 
       <jb-buttons>
-        <jb-button
-          type="submit"
-          color="info"
-          label="Login"
-        />
-        <jb-button
-          to="/dashboard"
-          color="info"
-          outline
-          label="Back"
-        />
+        <jb-button type="submit" color="info" label="Login" />
+        <jb-button to="/dashboard" color="info" outline label="Back" />
       </jb-buttons>
     </card-component>
   </full-screen-section>
