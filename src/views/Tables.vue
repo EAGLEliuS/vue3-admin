@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+/* eslint-disable */
+import { ref, onMounted } from "vue";
 import { mdiMonitorCellphone, mdiAccountMultiple } from "@mdi/js"; //, mdiTableBorder, mdiTableOff
 import MainSection from "@/components/MainSection.vue";
 import Notification from "@/components/Notification.vue";
@@ -10,7 +11,13 @@ import HeroBar from "@/components/HeroBar.vue";
 import BottomOtherPagesSection from "@/components/BottomOtherPagesSection.vue";
 import Pagination from "@/components/Pagination.vue";
 // import TitleSubBar from '@/components/TitleSubBar.vue'
+import { getQuickScreeningReagents } from "@/api/healthBuureau";
 
+onMounted(() => {
+  getQuickScreeningReagents().then((res) => {
+    console.log(res);
+  });
+});
 const titleStack = ref(["Admin", "Tables"]);
 </script>
 
@@ -29,7 +36,7 @@ const titleStack = ref(["Admin", "Tables"]);
       has-table
     >
       <clients-table checkable />
-      <pagination></pagination>
+      <pagination  ></pagination>
     </card-component>
 
     <!-- <title-sub-bar
