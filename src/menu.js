@@ -76,7 +76,12 @@ export default [
           label: 'Sub-item Two'
         }
       ]
-    }
+    },
+    {
+      to: '/map',
+      label: 'Map',
+      icon: mdiTable
+    },
   ],
   'About',
   [

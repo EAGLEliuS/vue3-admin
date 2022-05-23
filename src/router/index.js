@@ -10,7 +10,7 @@ const routes = [
     },
     path: '/',
     name: 'style',
-    component:  import(/* webpackChunkName: "tables" */ '@/views/Login.vue')
+    component: import(/* webpackChunkName: "tables" */ '@/views/Login.vue')
   },
   {
     // Document title tag
@@ -82,13 +82,21 @@ const routes = [
     path: '/error',
     name: 'error',
     component: () => import(/* webpackChunkName: "error" */ '@/views/Error.vue')
+  },
+  {
+    meta: {
+      title: 'Map',
+    },
+    path: '/map',
+    name: 'Map',
+    component: () => import(/* webpackChunkName: "error" */ '@/views/Map.vue')
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     return savedPosition || { top: 0 }
   }
 })
