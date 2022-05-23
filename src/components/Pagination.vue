@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <nav aria-label="Page navigation example">
+  <nav class="p-3" aria-label="Page navigation example">
     <ul class="inline-flex -space-x-px">
       <li>
         <a
